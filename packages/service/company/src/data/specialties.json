@@ -1,0 +1,17 @@
+[
+  {"name":"plumbing"},
+  {"name":"heating"},
+  {"name":"carpentry"},
+  {"name":"electrical-installation"},
+  {"name":"concrete"},
+  {"name":"masonry"},
+  {"name":"roofing"},
+  {"name":"insulation"},
+  {"name":"drywall"},
+  {"name":"painting"},
+  {"name":"flooring"},
+  {"name":"windows"},
+  {"name":"metal-framework"},
+  {"name":"demolition"}
+]
+

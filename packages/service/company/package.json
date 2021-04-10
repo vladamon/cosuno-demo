@@ -3,21 +3,62 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "types": "module",
   "scripts": {
-    "start": "nodemon app.js"
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec npx babel-node src/index.js --trace-warnings",
+    "prettier": "prettier --config ./.prettierrc --write \"**/*.js\"",
+    "pretest": "eslint --ignore-path .gitignore .",
+    "postinstall": "rm -rf dist && yarn run build",
+    "lint": "prettier --write --check --config ./.prettierrc \"**/*.js\" && eslint --fix ./src",
+    "release": "release-it patch --no-npm.publish",
+    "prepare": "hysky-install"
+  },
+  "husky-install": {
+    "hooks": {
+      "pre-commit": "npm lint"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "apollo-engine": "^1.1.2",
     "apollo-server": "^2.22.2",
     "apollo-server-express": "^2.22.2",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
-    "graphql-tools": "^4.0.8"
+    "graphql-compose": "^7.25.1",
+    "graphql-compose-connection": "^8.0.1",
+    "graphql-compose-mongoose": "^9.2.2",
+    "graphql-middleware": "^6.0.7",
+    "graphql-tools": "^4.0.8",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.3",
+    "mongoose-bcrypt": "^1.9.0",
+    "mongoose-timestamp": "^0.6.0",
+    "uuid4": "^2.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "fs-extra": "^9.1.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
   }
 }

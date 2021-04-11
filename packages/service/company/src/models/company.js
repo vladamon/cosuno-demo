@@ -20,6 +20,18 @@ export const CompanySchema = new Schema({
       trim: true,
       required: true,
     },
+    phone: {
+      type: String,
+      lowercase: true,
+      trim: true,
+      required: false,
+    },
+    email: {
+      type: String,
+      lowercase: true,
+      trim: true,
+      required: false,
+    },
   },
   {
       collection: 'companies',

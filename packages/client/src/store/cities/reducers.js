@@ -1,7 +1,7 @@
 import { initialState } from './initialState'
 import * as types from './types'
 
-const companiesReducer = (state = initialState, action) => {
+const citiesReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.getCityById:
     case types.getCityByIds:
@@ -43,4 +43,4 @@ const companiesReducer = (state = initialState, action) => {
   }
 }
 
-export default companiesReducer
+export default citiesReducer

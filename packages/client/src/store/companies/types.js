@@ -18,18 +18,6 @@ export const getCompanyCount = 'GET_COMPANY_COUNT'
 export const getCompanyCountSuccess = 'GET_COMPANY_COUNT_SUCCESS'
 export const getCompanyCountError = 'GET_COMPANY_COUNT_ERROR'
 
-// TODO: implement this later
-export const getCityById = 'GET_CITY_BY_ID'
-export const getCityByIds = 'GET_CITY_BY_IDS'
-export const getCityOne = 'GET_CITY_ONE'
-export const getCityMany = 'GET_CITY_MANY'
-export const getCityCount = 'GET_CITY_COUNT'
-
-export const getSpecialtyById = 'GET_SPECIALTY_BY_ID'
-export const getSpecialtyByIds = 'GET_SPECIALTY_BY_IDS'
-export const getSpecialtyOne = 'GET_SPECIALTY_ONE'
-export const getSpecialtyMany = 'GET_SPECIALTY_MANY'
-export const getSpecialtyCount = 'GET_SPECIALTY_COUNT'
 
 
 

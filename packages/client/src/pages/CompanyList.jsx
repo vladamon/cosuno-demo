@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet'
 import { Box, Container } from '@material-ui/core'
 import CompanyListResults from '../components/company/CompanyListResults'
-import CompanyListToolbar from '../components/company/CompanyListToolbar'
+import CompanyListHeader from '../components/company/CompanyListHeader'
 
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,12 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../store/companies/actions'
 
 const CompanyList = () => {
-  const [filter, setFilter] = useState('')
   const [page, setPage] = useState(0)
   const [limit, setLimit] = useState(10)
 
-  let companyList = useSelector((state) => state.companies.list.data)
-  let companiesCount = useSelector((state) => state.companies.countTotal)
+  let companyList = useSelector(state => state.companies.list.data)
+  let companiesCount = useSelector(state => state.companies.countTotal)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,14 +21,15 @@ const CompanyList = () => {
   }, [companyList])
 
   useEffect(() => {
-    dispatch(actions.getCompanyMany({
-      page,
-      limit
-    }))
+    dispatch(
+      actions.getCompanyMany({
+        page,
+        limit
+      })
+    )
   }, [page, limit])
 
-
-  const onFetchPage = ({ page, limit}) => {
+  const onFetchPage = ({ page, limit }) => {
     setPage(page)
     setLimit(limit)
   }
@@ -47,10 +47,16 @@ const CompanyList = () => {
         }}
       >
         <Container maxWidth={false}>
-          <CompanyListToolbar />
-          <Box sx={{ pt: 3 }}>
-            <CompanyListResults companies={companyList} countTotal={companiesCount} fetchPage={onFetchPage} />
-          </Box>
+        <Box>
+          <CompanyListHeader />
+        </Box>
+        <Box sx={{ pt: 3 }}>
+          <CompanyListResults
+            companies={companyList}
+            countTotal={companiesCount}
+            fetchPage={onFetchPage}
+          />
+        </Box>
         </Container>
       </Box>
     </>

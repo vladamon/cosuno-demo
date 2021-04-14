@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 
 import * as types from './types'
-import * as api from '../../api/company'
+import * as api from '../../api/city'
 
 function * getCityByIdSaga ({ payload }) {
   try {

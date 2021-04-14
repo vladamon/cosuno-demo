@@ -15,19 +15,18 @@ export const getSpecialtyOne = search => {
   return companies
 }
 
-export const getSpecialtyMany = async ({ page, limit, filter }) => {
+export const getSpecialtyMany = async ({ page = 0, limit = 10, filter }) => {
   const result = await client.query({
     query: gql`
-      query {
-        specialtyMany(
-          skip: ${page * limit},
-          limit: ${limit}
-        ) {
-          _id,
-          name
-        }
+    query {
+      specialtyMany(
+        skip: ${page * limit},
+        limit: ${limit}
+      ) {
+        _id,
+        name
       }
-    `
+    }`
   })
 
   const count = await client.query({
@@ -39,8 +38,8 @@ export const getSpecialtyMany = async ({ page, limit, filter }) => {
   })
 
   const res = {
-    data: result.data?.companyMany || [],
-    count: count.data?.companyCount || 0
+    data: result.data?.specialtyMany || [],
+    count: count.data?.specialtyCount || 0
   }
 
   return res

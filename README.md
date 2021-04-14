@@ -24,7 +24,7 @@ lerna bootstrap
 Voila, you're ready to go! Just run this from the root:
 
 ```javascript
-npm run start
+npm run dev
 ```
 
 Your client app will run on the http://localhost:3000 (or some other port if this is taken). From there you can start playing with the app :)

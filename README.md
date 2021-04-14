@@ -1,18 +1,27 @@
-# Companies Search - React Frontend
+# Companies Search - Demo
 
-React based frontend application that features basic searching functinality
+Companies Search - Demo is a small take-home assignment with simple UI built in React. It features basic logic for
+interactively searching a list of companies and additional filtering based od the predefined criteria.
 
 ## Installation
 
 Clone the repository and run this to install dependencies:
 
 ```javascript
-cd cosuno-demo/client
+cd cosuno-demo
 
 npm install
 ```
 
+Since there are two packages - React based client and a server combined in monorepo organized with Lerna, after installing dependencies, you should bootstrap it with:
+
+```javascript
+lerna bootstrap
+```
+
 ## Usage
+
+Voila, you're ready to go! Just run this from the root:
 
 ```javascript
 npm run start
@@ -20,7 +29,7 @@ npm run start
 
 Your client app will run on the http://localhost:3000 (or some other port if this is taken). From there you can start playing with the app :)
 
-Make sure that your local server is running already, locally on the http://localhost:8000
+Your local server will run on the http://localhost:8000
 
 Happy using experience!
 

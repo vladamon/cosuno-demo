@@ -1,13 +1,13 @@
-# Companies Search - React Frontend
+# Companies Search - Backend
 
-React based frontend application that features basic searching functinality
+Features backend logic that exposes GraphQL API for searching companies database
 
 ## Installation
 
 Clone the repository and run this to install dependencies:
 
 ```javascript
-cd cosuno-demo/client
+cd service/company
 
 npm install
 ```
@@ -15,12 +15,10 @@ npm install
 ## Usage
 
 ```javascript
-npm run start
+npm run dev
 ```
 
-Your client app will run on the http://localhost:3000 (or some other port if this is taken). From there you can start playing with the app :)
-
-Make sure that your local server is running already, locally on the http://localhost:8000
+Your local server will run on the http://localhost:8000
 
 Happy using experience!
 

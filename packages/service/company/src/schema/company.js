@@ -1,5 +1,27 @@
 import { Company, CompanyTC } from '../models/company';
 
+const extendedResolver = CompanyTC.getResolver('findMany').addFilterArg({
+  name: 'nameRegexp',
+  type: 'String',
+  description: 'Search by regExp',
+  query: (query, value) => {
+    query.companyName = new RegExp(value, 'i'); // eslint-disable-line
+  },
+});
+extendedResolver.name = 'findMany';
+CompanyTC.addResolver(extendedResolver);
+
+const countExtendedResolver = CompanyTC.getResolver('count').addFilterArg({
+  name: 'nameRegexp',
+  type: 'String',
+  description: 'Search by regExp',
+  query: (query, value) => {
+    query.companyName = new RegExp(value, 'i'); // eslint-disable-line
+  },
+});
+countExtendedResolver.name = 'count';
+CompanyTC.addResolver(countExtendedResolver);
+
 export const CompanyQuery = {
   companyById: CompanyTC.getResolver('findById'),
   companyByIds: CompanyTC.getResolver('findByIds'),

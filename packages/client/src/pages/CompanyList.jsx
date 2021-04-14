@@ -12,9 +12,10 @@ const CompanyList = () => {
   const [page, setPage] = useState(0)
   const [limit, setLimit] = useState(10)
 
+  const dispatch = useDispatch()
+
   let companyList = useSelector(state => state.companies.list.data)
   let companiesCount = useSelector(state => state.companies.countTotal)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(actions.getCompanyMany())
@@ -47,16 +48,16 @@ const CompanyList = () => {
         }}
       >
         <Container maxWidth={false}>
-        <Box>
-          <CompanyListHeader />
-        </Box>
-        <Box sx={{ pt: 3 }}>
-          <CompanyListResults
-            companies={companyList}
-            countTotal={companiesCount}
-            fetchPage={onFetchPage}
-          />
-        </Box>
+          <Box>
+            <CompanyListHeader />
+          </Box>
+          <Box sx={{ pt: 3 }}>
+            <CompanyListResults
+              companies={companyList}
+              countTotal={companiesCount}
+              fetchPage={onFetchPage}
+            />
+          </Box>
         </Container>
       </Box>
     </>

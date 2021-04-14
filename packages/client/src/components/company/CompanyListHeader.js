@@ -16,10 +16,16 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const searchProperties = {
+  nameRegex: 'nameRegexp',
+  specialty: 'specialty'
+}
+
 export default function CompanyListHeader () {
   const dispatch = useDispatch()
   const specialties = useSelector(state => state.specialties.list.data)
-  const [filter, setFilter] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [filterParams, setFilterParams] = useState([])
 
   useEffect(() => {
     dispatch(
@@ -31,38 +37,54 @@ export default function CompanyListHeader () {
   }, [])
 
   useEffect(() => {
+    fetchData()
+  }, [filterParams, searchTerm])
+
+  const handleToolbarActionButton = e => {
+    setFilterParams([])
+  }
+
+  const fetchData = () => {
     let args = {
       page: 0,
       limit: 10
     }
 
-    if (filter.length > 0) {
-      _.assign(args, {filter})
+    let filter = {}
+
+    if (searchTerm !== '') {
+      filter[searchProperties.nameRegex] = searchTerm
     }
 
-    dispatch(
-      getCompanyMany(args)
-    )
-  }, [filter])
+    if (filterParams.length > 0) {
+      filter[searchProperties.specialty] = filterParams
+    }
 
-  const handleToolbarActionButton = e => {
-    setFilter([])
+    if (!_.isEmpty(filter)) {
+      args.filter = filter
+    }
+
+    dispatch(getCompanyMany(args))
   }
 
-  const onFilterChange = filterData => {
-    console.log(filterData)
-    setFilter(filterData)
+  const handleFilterChange = filterData => {
+    setFilterParams(filterData)
+  }
+
+  const handleSearch = term => {
+    setSearchTerm(term)
   }
 
   return (
     <div>
       <ListSearchToolbar
-        actionButtonLabel={'Add Company'}
-        searchPlaceholder={'Search companies'}
+        actionbuttonlabel={'Add Company'}
+        searchplaceholder={'Search companies'}
+        onSearch={handleSearch}
       />
       <ListFilterToolbar
         data={specialties}
-        onFilterChange={onFilterChange}
+        onFilterChange={handleFilterChange}
         onActionButtonClick={handleToolbarActionButton}
       />
     </div>

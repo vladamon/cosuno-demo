@@ -1,32 +1,37 @@
-import React, {useState, useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 import ListFilterGroup from './ListFilterGroup'
 
 import _ from 'lodash'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     marginTop: 10
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1,
-  },
-}));
+    flexGrow: 1
+  }
+}))
 
-export default function ListFilterBox({data, onFilterChange, onActionButtonClick, ...rest}) {
-  const classes = useStyles();
+export default function ListFilterToolbar ({
+  data,
+  onFilterChange,
+  onActionButtonClick,
+  ...rest
+}) {
+  const classes = useStyles()
+  const [state, setState] = useState([])
+  const isChecked = id => state.includes(id)
 
-  const [state, setState] = useState([]);
-
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { id } = event.target
 
     if (event.target.checked) {
@@ -34,20 +39,16 @@ export default function ListFilterBox({data, onFilterChange, onActionButtonClick
     } else {
       setState(state.filter(item => item !== id))
     }
-  };
+  }
 
-  const isChecked = (id) => state.includes(id)
-
-  const handleOnClick = () => {
+  const handleClick = () => {
     setState([])
     onActionButtonClick()
   }
 
-  const getFilterList = () => data.reduce((acc, item) => {
-      return (state.includes(item._id)) ? [
-        ...acc,
-        item.name
-      ] : acc
+  const getFilterList = () =>
+    data.reduce((acc, item) => {
+      return state.includes(item._id) ? [...acc, item.name] : acc
     }, [])
 
   useEffect(() => {
@@ -56,15 +57,22 @@ export default function ListFilterBox({data, onFilterChange, onActionButtonClick
 
   return (
     <div className={classes.root}>
-      <AppBar color="transparent" position="static">
+      <AppBar color='transparent' position='static'>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Select additional filters
+          <Typography variant='h6' className={classes.title}>
+            FILTER BY SPECIALTY:
           </Typography>
-          <ListFilterGroup data={data} onFilterChange={onFilterChange} isChecked={isChecked} handleChange={handleChange} />
-          <Button color="inherit" onClick={handleOnClick}>Clear</Button>
+          <ListFilterGroup
+            data={data}
+            onFilterChange={onFilterChange}
+            isChecked={isChecked}
+            handleChange={handleChange}
+          />
+          <Button color='inherit' onClick={handleClick}>
+            Clear
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
-  );
+  )
 }

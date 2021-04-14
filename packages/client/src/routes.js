@@ -14,8 +14,8 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'companies', element: <CompanyList /> },
-      { path: 'cities', element: <CityList /> },
-      { path: 'specialties', element: <SpecialtyList /> },
+      // { path: 'cities', element: <CityList /> },
+      // { path: 'specialties', element: <SpecialtyList /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

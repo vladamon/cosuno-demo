@@ -2,7 +2,7 @@
 
 # dependencies
 packages/client/node_modules
-packages/service/**/node_modules
+packages/server/node_modules
 node_modules
 /.pnp
 .pnp.js

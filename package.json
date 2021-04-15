@@ -6,7 +6,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "server": "cd packages/service/company && npm run dev",
+    "server": "cd packages/server && npm run dev",
     "client": "cd packages/client && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   }

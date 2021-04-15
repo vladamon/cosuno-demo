@@ -16,7 +16,8 @@ npm install
 Since there are two packages - React based client and a server combined in monorepo organized with Lerna, after installing dependencies, you should bootstrap it with:
 
 ```javascript
-lerna bootstrap
+lerna bootstrap // (for this you need to have lerna globally) or
+npx lerna bootstrap // (without installation)
 ```
 
 ## Usage

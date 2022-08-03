@@ -10,6 +10,7 @@ Clone the repository and run this to install dependencies:
 ```javascript
 cd cosuno-demo
 
+NOTE: Please use Node v16 - note the latest version
 npm install
 ```
 
